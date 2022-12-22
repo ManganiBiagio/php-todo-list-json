@@ -1,0 +1,26 @@
+.task{
+    display: flex;
+    font-size: 1.2rem;
+    border: 1px solid lightgrey;
+    padding: .3rem;
+}
+
+.btn-delete{
+    visibility: hidden;
+    color:white;
+    background-color: red;
+    border-radius: 10px;
+}
+.task:hover .btn-delete{
+    visibility: visible;
+
+}
+
+.task .fa-circle{
+    color: orange;
+
+}
+.task .fa-circle-check{
+    color: green;
+
+}
