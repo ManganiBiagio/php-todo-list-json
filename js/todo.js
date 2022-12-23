@@ -19,11 +19,50 @@ createApp({
     onTaskClick(iClickedTask){
         const taskClicked=this.toDoList[iClickedTask];
         taskClicked.done=!taskClicked.done;
+
+        const data={
+            list:[],
+        };
+        
+        this.toDoList.forEach((item)=>{
+            data.list.push({
+                "message":item.message,
+                "done":item.done,
+
+            }
+            )
+        })
+        axios.post("api/reloadListTasks.php",data,{
+            headers:{'Content-Type': 'multipart/form-data' }
+        }).then((resp)=>{
+            this.fetchTasks();
+
+
+        })
        
         
     },
     onDeleteTask(iDeleteTask){
         this.toDoList.splice(iDeleteTask,1);
+        const data={
+            list:[],
+        };
+        
+        this.toDoList.forEach((item)=>{
+            data.list.push({
+                "message":item.message,
+                "done":item.done,
+
+            }
+            )
+        })
+        axios.post("api/reloadListTasks.php",data,{
+            headers:{'Content-Type': 'multipart/form-data' }
+        }).then((resp)=>{
+            this.fetchTasks();
+
+
+        })
         
 
     },
@@ -52,7 +91,7 @@ createApp({
             this.toDoList=[];
 
 
-            if(toDoListRow.length>0){
+            if(toDoListRow){
 
                 toDoListRow.forEach(element => {
                     if(element.done==="true"){
@@ -68,7 +107,8 @@ createApp({
             }
         })
 
-    }
+    },
+    
 
   },
   mounted(){
