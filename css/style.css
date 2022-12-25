@@ -3,6 +3,8 @@
     font-size: 1.2rem;
     border: 1px solid lightgrey;
     padding: .3rem;
+    
+    
 }
 
 .btn-delete{
@@ -10,6 +12,7 @@
     color:white;
     background-color: red;
     border-radius: 10px;
+    height: 30px;
 }
 .task:hover .btn-delete{
     visibility: visible;
@@ -24,3 +27,19 @@
     color: green;
 
 }
+.box-task{
+    display: flex;
+    align-items: center;
+}
+.date{
+    font-size: 11px;
+    align-self: flex-end;
+    flex-grow: 1;
+    text-align: end;
+    padding: 4px;
+}
+.message{
+    flex-basis: 60%;
+    flex-grow: 0;
+}
+    

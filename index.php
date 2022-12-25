@@ -47,11 +47,12 @@
 
                     <!-- lista delle task -->
                     <div class="d-flex flex-column gap-1">
-                        <div class="task" v-for="(task,i) in toDoList">
-                            <div class="flex-grow-1" @click="onTaskClick(i)">
+                        <div class="task" v-for="(task,i) in toDoList" :style="{'order':-i}">
+                            <div class="flex-grow-1 box-task" @click="onTaskClick(i)">
                                 <i class="fa-regular " :class="{'fa-circle' : !task.done,'fa-circle-check':task.done }"></i>
                             
-                                <span class="ms-2" :class="{'text-decoration-line-through': task.done}">{{task.message}}</span>
+                                <div class="ms-2 message" :class="{'text-decoration-line-through': task.done}">{{task.message}}</div>
+                                <div class="date">Creato:{{task.createdAt}}</div>
                             </div>
                             <div class="px-3 btn-delete" @click="onDeleteTask(i)">
                                 <i class="fa-solid fa-trash"></i>

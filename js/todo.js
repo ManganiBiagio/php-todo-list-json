@@ -18,20 +18,6 @@ createApp({
   methods:{
     onTaskClick(iClickedTask){
         const taskClicked=this.toDoList[iClickedTask];
-        
-
-        // const data={
-        //     list:[],
-        // };
-        
-        // this.toDoList.forEach((item)=>{
-        //     data.list.push({
-        //         "message":item.message,
-        //         "done":item.done,
-
-        //     }
-        //     )
-        // })
         axios.post("api/changeDoneTask.php",taskClicked,{
             headers:{'Content-Type': 'multipart/form-data' }
         }).then((resp)=>{
@@ -76,8 +62,6 @@ createApp({
     },
     fetchTasks(){
         axios.get("api/tasksRead.php").then((resp)=>{
-            // this.toDoList=resp.data;
-            // console.log(resp.data);
             const toDoListRow=resp.data;
             this.toDoList=[];
 
