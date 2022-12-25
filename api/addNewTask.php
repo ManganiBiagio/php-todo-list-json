@@ -8,7 +8,8 @@ $newTask = [
   "message" => $_POST["message"],
   "done" => $_POST["done"],
   "id"=>uniqid(),
-  "createdAt"=>date("G:i  d/n/Y")
+  "createdAt"=>date("G:i  d/n/Y"),
+  "completedAt"=>""
 ];
 
 $tasks[] = $newTask;

@@ -11,8 +11,10 @@ foreach($taskList as  $i=>$task){
 }
 if($taskList[$indice]["done"]==="true"){
     $taskList[$indice]["done"]="false";
+    $taskList[$indice]["completedAt"]="";
 }else{
     $taskList[$indice]["done"]="true";
+    $taskList[$indice]["completedAt"]=date("G:i  d/n/Y");
 }
 
 $tasksJson = json_encode($taskList, JSON_PRETTY_PRINT);

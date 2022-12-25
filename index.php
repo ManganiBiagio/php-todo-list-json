@@ -53,6 +53,7 @@
                             
                                 <div class="ms-2 message" :class="{'text-decoration-line-through': task.done}">{{task.message}}</div>
                                 <div class="date">Creato:{{task.createdAt}}</div>
+                                <div class="date" v-if="task.completedAt">Completato:{{task.completedAt}}</div>
                             </div>
                             <div class="px-3 btn-delete" @click="onDeleteTask(i)">
                                 <i class="fa-solid fa-trash"></i>

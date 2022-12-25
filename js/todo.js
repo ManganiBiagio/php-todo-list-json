@@ -70,11 +70,11 @@ createApp({
 
                 toDoListRow.forEach(element => {
                     if(element.done==="true"){
-                       this.toDoList.push(new ToDoItem(element.message,true,element.id,element.createdAt)) ;
+                       this.toDoList.push(new ToDoItem(element.message,true,element.id,element.createdAt,element.completedAt)) ;
     
                     }
                     else{
-                        this.toDoList.push(new ToDoItem(element.message,false,element.id,element.createdAt));
+                        this.toDoList.push(new ToDoItem(element.message,false,element.id,element.createdAt,element.completedAt));
                     }
                     
                     
