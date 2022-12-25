@@ -7,6 +7,8 @@ $tasks = json_decode($tasks, true);
 $newTask = [
   "message" => $_POST["message"],
   "done" => $_POST["done"],
+  "id"=>uniqid(),
+  "createdAt"=>date("G:i  d/n/Y")
 ];
 
 $tasks[] = $newTask;

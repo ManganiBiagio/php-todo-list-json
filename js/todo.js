@@ -18,21 +18,21 @@ createApp({
   methods:{
     onTaskClick(iClickedTask){
         const taskClicked=this.toDoList[iClickedTask];
-        taskClicked.done=!taskClicked.done;
-
-        const data={
-            list:[],
-        };
         
-        this.toDoList.forEach((item)=>{
-            data.list.push({
-                "message":item.message,
-                "done":item.done,
 
-            }
-            )
-        })
-        axios.post("api/reloadListTasks.php",data,{
+        // const data={
+        //     list:[],
+        // };
+        
+        // this.toDoList.forEach((item)=>{
+        //     data.list.push({
+        //         "message":item.message,
+        //         "done":item.done,
+
+        //     }
+        //     )
+        // })
+        axios.post("api/changeDoneTask.php",taskClicked,{
             headers:{'Content-Type': 'multipart/form-data' }
         }).then((resp)=>{
             this.fetchTasks();
@@ -43,20 +43,11 @@ createApp({
         
     },
     onDeleteTask(iDeleteTask){
-        this.toDoList.splice(iDeleteTask,1);
-        const data={
-            list:[],
-        };
+        const taskToDeleted=this.toDoList[iDeleteTask];
         
-        this.toDoList.forEach((item)=>{
-            data.list.push({
-                "message":item.message,
-                "done":item.done,
-
-            }
-            )
-        })
-        axios.post("api/reloadListTasks.php",data,{
+        
+        
+        axios.post("api/deleteTask.php",taskToDeleted,{
             headers:{'Content-Type': 'multipart/form-data' }
         }).then((resp)=>{
             this.fetchTasks();
@@ -95,11 +86,11 @@ createApp({
 
                 toDoListRow.forEach(element => {
                     if(element.done==="true"){
-                       this.toDoList.push(new ToDoItem(element.message,true)) ;
+                       this.toDoList.push(new ToDoItem(element.message,true,element.id,element.createdAt)) ;
     
                     }
                     else{
-                        this.toDoList.push(new ToDoItem(element.message,false));
+                        this.toDoList.push(new ToDoItem(element.message,false,element.id,element.createdAt));
                     }
                     
                     
